@@ -142,16 +142,14 @@ class ServletStudentTest_Registration {
 	    
 	    /**
 	     * Per questo test case è necessario inserire nel database un utente con email 'r.verdi98@studenti.unisa.it'
-	     * Inserisco quindi tutti gli altri parametri per poter effettuare il test case
+	     * 
 	     * */
 	    @Test
 	    void TC_02_10() {
 		when(request.getParameter("name")).thenReturn("Marco");
 		when(request.getParameter("surname")).thenReturn("Iannone");
-		when(request.getParameter("email")).thenReturn("r.verdi98@studenti.unisa.it");
 		when(request.getParameter("sex")).thenReturn("M");
-		when(request.getParameter("password")).thenReturn("abcd1234");
-		when(request.getParameter("verifyPassword")).thenReturn("abcd1234");
+		when(request.getParameter("email")).thenReturn("r.verdi98@studenti.unisa.it");
 		assertDoesNotThrow(() -> servletStudent.doPost(request, response));
 		try {
 		    JSONObject obj = (JSONObject) new JSONParser().parse(sw.getBuffer().toString());
